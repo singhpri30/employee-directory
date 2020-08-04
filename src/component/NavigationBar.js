@@ -6,7 +6,7 @@ import SearchUser from './SearchUser';
 
 export default function NavigationBar() {
   return (
-    <div className="container">
+    
       <Navbar bg="dark" expand="lg">
         <Navbar.Brand>Employee Directory</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -14,6 +14,6 @@ export default function NavigationBar() {
          <SearchUser></SearchUser>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    
   )
 }
