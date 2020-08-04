@@ -1,20 +1,5 @@
-// import React from 'react';
-// import Form from 'react-bootstrap/Form';
-// import FormControl from 'react-bootstrap/FormControl';
-// import Button from 'react-bootstrap/Button';
-
-// export default function SearchUser(props){
-//     return(
-//         <Form inline >
-//         <FormControl onChange={props.handleInputChange} value={props.searchValue}type="text" name="search" placeholder="Search" className="mr-sm-2 mr-auto" />
-//         <Button onClick={props.handleSearch}variant="outline-success">Search</Button>
-//     </Form>
-//     )
-// }
-
-   
-       
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.css';
 
 function SearchUser(props) {
   return (

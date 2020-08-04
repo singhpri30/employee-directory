@@ -1,5 +1,6 @@
 import React from 'react'
 import UserList from "./TableData";
+import 'bootstrap/dist/css/bootstrap.css';
 
 // import Button from 'react-bootstrap/Button';
 // import NavBar from "./NavigationBar";
@@ -40,7 +41,7 @@ export default class TableEle extends React.Component {
     handleInputChange = event => {
         let users = this.state.users
         const name = event.target.name;
-        console.log(this.state.searchValue);
+
         const value = event.target.value;
         console.log(value);
         this.setState({
@@ -52,24 +53,17 @@ export default class TableEle extends React.Component {
             // console.log(searchTerm)
         })
         this.setState({
-            users:filteredResults
+            users: filteredResults
         })
+
         console.log(filteredResults);
     };
 
     // When the form is submitted, search the Giphy API for `this.state.search`
     // handleFormSubmit = event => {
     //     event.preventDefault();
-    //     const searchTerm = this.state.name;
-    //     console.log(searchTerm);
-    //     let users = this.state.users
-    //     console.log(users.name);
-    //     const filteredResults = users.filter(user => {
-    //         return user.name.first.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ? true : false
-    //         // console.log(user);
-    //         // console.log(searchTerm)
-    //     })
-    //     console.log(filteredResults);
+    //     this.handleInputChange(this.state.users);
+
 
     // }
 
