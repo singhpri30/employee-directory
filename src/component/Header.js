@@ -4,9 +4,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 export default function Header() {
   return (
     
-     <div className="container m-auto">
+     <header className="h-50">
        <h2 className="text-center bg-info mt-2">Employee Directory</h2>
-     </div>
+     </header>
     
   )
 }
