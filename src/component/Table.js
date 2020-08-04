@@ -1,10 +1,9 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 export default class TableEle extends React.Component {
-    // const url="https://randomuser.me/api/?results=10";
-    // console.log(url);
-
+    
     state = {
         error: null,
         isLoaded: false,
@@ -23,9 +22,6 @@ export default class TableEle extends React.Component {
                     });
                     console.log(this.state.users);
                 },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
                 (error) => {
                     this.setState({
                         isLoaded: true,
@@ -35,36 +31,44 @@ export default class TableEle extends React.Component {
             )
     }
 
-
+// sortTable=(event,sortKey)=>{
+//     const users = this.state.users;
+//     users.sort((a,b) => a[sortKey]-b[sortKey]);
+//     this.setState({users})
+// }
     render() {
         return (
             <div className="container" >
                 <Table striped bordered hover variant="dark" className="mt-2">
                     <thead>
                         <tr>
-                            
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>Picture</th>
+                            <th onClick={e=>{
+                                this.sortTable(e, "first name" )
+                            }}><Button>First Name</Button></th>
+                            <th onClick={e=>{
+                                this.sortTable(e, "last name" )
+                            }}>Last Name</th>
                             <th>Gender</th>
                             <th>Email</th>
                             <th>Contact Number</th>
-                            <th>Picture</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        
+                         {/* looping over user array    */}
                         {this.state.users.map(user => {
 
-                            return(
+                            return (
                                 <tr key={user.login.uuid}>
-                                <td>{user.name.first}</td>
-                                <td>{user.name.last}</td>
-                                {/* <td>{user.login.uuid}</td> */}
-                                <td>{user.gender}</td>
-                                <td>{user.email}</td>
-                                <td>{user.phone}</td>
-                                <td><img src={user.picture.medium} alt="user"></img></td>
-                            </tr>
+                                    <td><img src={user.picture.medium} alt="user"></img></td>
+                                    <td>{user.name.first}</td>
+                                    <td>{user.name.last}</td>
+                                    <td>{user.gender}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.phone}</td>
+                                    
+                                </tr>
                             )
                         }
                         )}

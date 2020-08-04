@@ -1,11 +1,7 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-// import Nav from 'react-bootstrap/Nav';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import SearchUser from './SearchUser';
 
 
 export default function NavigationBar() {
@@ -15,10 +11,7 @@ export default function NavigationBar() {
         <Navbar.Brand>Employee Directory</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Form inline >
-            <FormControl type="text" placeholder="Search" className="mr-sm-2 mr-auto"/>
-            <Button variant="outline-success">Search</Button>
-          </Form>
+         <SearchUser></SearchUser>
         </Navbar.Collapse>
       </Navbar>
     </div>
