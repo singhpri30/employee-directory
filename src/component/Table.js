@@ -6,24 +6,14 @@ import UserList from "./TableData";
 import SearchUser from "./SearchUser";
 
 export default class TableEle extends React.Component {
-    constructor(props) {
-        super(props);
-       this.state = {
-            searchValue: "",
-            error: null,
-            isLoaded: false,
-            users: [],
-    
-        }
+
+    state = {
+        searchValue: "",
+        error: null,
+        isLoaded: false,
+        users: [],
+
     }
-
-    // state = {
-    //     searchValue: "",
-    //     error: null,
-    //     isLoaded: false,
-    //     users: [],
-
-    // }
 
     componentDidMount() {
         fetch("https://randomuser.me/api/?results=20") //getting 20 random users from this API
@@ -48,6 +38,7 @@ export default class TableEle extends React.Component {
 
 
     handleInputChange = event => {
+        let users = this.state.users
         const name = event.target.name;
         console.log(this.state.searchValue);
         const value = event.target.value;
@@ -55,37 +46,43 @@ export default class TableEle extends React.Component {
         this.setState({
             [name]: value
         });
+        const filteredResults = users.filter(user => {
+            return user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false
+            // console.log(user);
+            // console.log(searchTerm)
+        })
+        this.setState({
+            users:filteredResults
+        })
+        console.log(filteredResults);
     };
 
     // When the form is submitted, search the Giphy API for `this.state.search`
-    handleSearch = event => {
-        event.preventDefault();
-        let users = this.state.users
-        console.log(users);
-        //     const filteredResults = users.filter(user => employee.role === this.state.filter);
-        // // if there are results that match the filter, set the state.results to the new results
-        // // if no results, noResults is set to true, which is used for conditional rendering
-        // if (filteredResults.length !== 0) {
-        //     this.setState({results: filteredResults, noResults: false, madeSearch: true});
-        // } else {
-        //     this.setState({noResults: true});
-        // }
-        // // clear the input
-        // this.setState({filter: ''});
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     const searchTerm = this.state.name;
+    //     console.log(searchTerm);
+    //     let users = this.state.users
+    //     console.log(users.name);
+    //     const filteredResults = users.filter(user => {
+    //         return user.name.first.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1 ? true : false
+    //         // console.log(user);
+    //         // console.log(searchTerm)
+    //     })
+    //     console.log(filteredResults);
 
+    // }
 
-    };
-    
     render() {
         return (
-          <div className="container">
-            <SearchUser
-              search={this.state.search}
-              handleFormSubmit={this.handleFormSubmit}
-              handleInputChange={this.handleInputChange}
-            />
-            <UserList userResults={this.state.users} />
-          </div>
+            <div className="container">
+                <SearchUser
+                    search={this.state.search}
+                    handleFormSubmit={this.handleFormSubmit}
+                    handleInputChange={this.handleInputChange}
+                />
+                <UserList userResults={this.state.users} />
+            </div>
         );
-      }
     }
+}
