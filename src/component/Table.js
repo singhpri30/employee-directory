@@ -1,4 +1,5 @@
 import React from 'react'
+import UserList from "./TableData";
 
 // import Button from 'react-bootstrap/Button';
 // import NavBar from "./NavigationBar";
@@ -77,53 +78,14 @@ export default class TableEle extends React.Component {
     
     render() {
         return (
-
-            <div className="container" >
-                  <div>
-        <SearchForm
-          search={this.state.search}
-          handleFormSubmit={this.handleFormSubmit}
-          handleInputChange={this.handleInputChange}
-        />
-        <ResultList results={this.state.results} />
-      </div>
-               
-
-                <Table striped bordered hover variant="dark" className="mt-2">
-                    <thead>
-                        <tr>
-                            <th>Picture</th>
-                            <th>First Name</th>
-                            <th >Last Name</th>
-                            <th>Gender</th>
-                            <th>Email</th>
-                            <th>Contact Number</th>
-                            <th>City</th>
-                            <th>State</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* looping over user array    */}
-                        {this.state.users.map(user => {
-
-                            return (
-                                <tr key={user.login.uuid}>
-                                    <td><img src={user.picture.medium} alt="user"></img></td>
-                                    <td>{user.name.first}</td>
-                                    <td>{user.name.last}</td>
-                                    <td>{user.gender}</td>
-                                    <td>{user.email}</td>
-                                    <td>{user.phone}</td>
-                                    <td>{user.location.city}</td>
-                                    <td>{user.location.state}</td>
-                                </tr>
-                            )
-                        }
-                        )}
-                    </tbody>
-                </Table>
-            </div>
-        )
+          <div className="container">
+            <SearchUser
+              search={this.state.search}
+              handleFormSubmit={this.handleFormSubmit}
+              handleInputChange={this.handleInputChange}
+            />
+            <UserList userResults={this.state.users} />
+          </div>
+        );
+      }
     }
-}

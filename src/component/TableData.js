@@ -1,7 +1,7 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
 
-function ResultList(props) {
+function UserList(props) {
     return (
         <Table striped bordered hover variant="dark" className="mt-2">
             <thead>
@@ -19,7 +19,7 @@ function ResultList(props) {
             </thead>
             <tbody>
                 {/* looping over user array    */}
-                {this.state.users.map(user => {
+                {props.userResults.map(user => {
 
                     return (
                         <tr key={user.login.uuid}>
@@ -40,4 +40,4 @@ function ResultList(props) {
     );
 }
 
-export default ResultList;
+export default UserList;
