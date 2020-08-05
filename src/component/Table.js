@@ -37,9 +37,8 @@ export default class TableEle extends React.Component {
     }
 
 
-
     handleInputChange = event => {
-        let users = this.state.users
+        // let users = this.state.users
         const name = event.target.name;
 
         const value = event.target.value;
@@ -47,25 +46,31 @@ export default class TableEle extends React.Component {
         this.setState({
             [name]: value
         });
-        const filteredResults = users.filter(user => {
-            return user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false
-            // console.log(user);
-            // console.log(searchTerm)
-        })
-        this.setState({
-            users: filteredResults
-        })
-
-        console.log(filteredResults);
     };
 
-    // When the form is submitted, search the Giphy API for `this.state.search`
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-    //     this.handleInputChange(this.state.users);
+    handleFormSubmit = event => {
+        event.preventDefault();
+        let users = this.state.users
+        console.log(users);
+        const value = this.state.search;
+        console.log(value);
+        if (value !== "") {
+            const filteredResults = users.filter(user => {
+                return user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false
+                // console.log(user);
+                // console.log(searchTerm)
+            })
+            this.setState({
+                users: filteredResults
+            })
+            console.log(filteredResults);
+        }
+        else {
+            users = this.state.users;
+        }
 
+    }
 
-    // }
 
     render() {
         return (
