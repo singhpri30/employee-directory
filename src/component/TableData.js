@@ -1,7 +1,8 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.css';
-import "./tableData.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 function UserList(props) {
     return (
@@ -9,15 +10,15 @@ function UserList(props) {
             <thead>
                 <tr>
                     <th>Picture</th>
-                    <th className="MyReactTableClass" onClick={props.sortByFirst}>First Name</th>
-                    <th onClick={props.sortByLast}>Last Name</th>
+                    <th onClick={props.sortByFirst}>First Name<FontAwesomeIcon icon={faAngleDown} /></th>
+                    <th onClick={props.sortByLast}>Last Name<FontAwesomeIcon icon={faAngleDown} /></th>
                     <th>Gender</th>
                     <th>Email</th>
                     <th>Contact Number</th>
-                    <th onClick={props.sortByCity}>City</th>
-                    <th onClick={props.sortByState}>State</th>
+                    <th onClick={props.sortByCity}>City<FontAwesomeIcon icon={faAngleDown} /></th>
+                    <th onClick={props.sortByState}>State<FontAwesomeIcon icon={faAngleDown} /></th>
 
-                </tr>   
+                </tr>
             </thead>
             <tbody>
                 {/* looping over user array    */}
