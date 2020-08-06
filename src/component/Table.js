@@ -101,7 +101,7 @@ export default class TableEle extends React.Component {
                             }
                         }
                     })
-    
+
                 }
                 else {
 
@@ -113,65 +113,86 @@ export default class TableEle extends React.Component {
                             }
                         }
                     })
-    
+
                 }
-
-        
-        break;
+                break;
             case "lastName":
-        sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
-        break;
+            if (orderBy.last.asc) {
+                sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
+                this.setState({
+                    orderBy: {
+                        last: {
+                            asc: false
+                        }
+                    }
+                })
+
+            }
+            else {
+
+                sortedUserList = this.state.users.sort((a, b) => b.name.last.localeCompare(a.name.last));
+                this.setState({
+                    orderBy: {
+                        last: {
+                            asc: true
+                        }
+                    }
+                })
+
+            }
+                
+             break;
             case "city":
-        sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
-        break;
+                sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
+                break;
             case "state":
-        sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
-        break;
+                sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
+                break;
             default:
-        sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
-}
+                sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
+        }
 
-this.setState({
-    users: sortedUserList
-})
+        this.setState({
+            users: sortedUserList
+        })
     }
-// sortByLast = (event) => {
-//     event.preventDefault();
-//     let sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
-//     this.setState({
-//         users: sortedUserList
-//     })
-// }
-// sortByCity = (event) => {
-//     event.preventDefault();
-//     let sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
-//     this.setState({
-//         users: sortedUserList
-//     })
-// }
+    // sortByLast = (event) => {
+    //     event.preventDefault();
+    //     let sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
+    //     this.setState({
+    //         users: sortedUserList
+    //     })
+    // }
+    // sortByCity = (event) => {
+    //     event.preventDefault();
+    //     let sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
+    //     this.setState({
+    //         users: sortedUserList
+    //     })
+    // }
 
-// sortByState = (event) => {
-//     event.preventDefault();
-//     let sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
-//     this.setState({
-//         users: sortedUserList
-//     })
-// }
+    // sortByState = (event) => {
+    //     event.preventDefault();
+    //     let sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
+    //     this.setState({
+    //         users: sortedUserList
+    //     })
+    // }
 
 
 
-render() {
-    return (
-        <div className="container">
-            <SearchUser
-                search={this.state.search}
-                handleInputChange={this.handleInputChange}
-            />
-            <UserList userResults={this.state.users}
-                sortBy={this.sortBy}
-                orderBy={this.state.orderBy}
-            />
-        </div>
-    );
-}
+    render() {
+        return (
+            <div className="container">
+                <SearchUser
+                    search={this.state.search}
+                    handleInputChange={this.handleInputChange}
+                />
+                <UserList userResults={this.state.users}
+                    sortBy={this.sortBy}
+                    orderBy={this.state.orderBy}
+                />
+            </div>
+        );
+    }
 }
