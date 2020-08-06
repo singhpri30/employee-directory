@@ -48,7 +48,7 @@ export default class TableEle extends React.Component {
     };
 
     handleFormSubmit = event => {
-        
+
         event.preventDefault();
         let users = this.state.users
         console.log(users);
@@ -66,11 +66,23 @@ export default class TableEle extends React.Component {
             console.log(filteredResults);
         }
         else {
-            alert("please enter search criteria");
+            this.setState({
+                users: ""
+            })
         }
 
     }
 
+
+    sortByFirst = (event) => {
+        event.preventDefault();
+        let sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
+       this.setState({
+           users:sortedUserList
+       })
+    }
+
+   
 
     render() {
         return (
@@ -80,11 +92,11 @@ export default class TableEle extends React.Component {
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
                 />
-                <UserList userResults={this.state.users} 
-                sortByFirst={this.sortByFirst}
-                sortByLast={this.sortByLast}
-                sortByCity={this.sortByCity}
-                sortByState={this.sortByState}/>
+                <UserList userResults={this.state.users}
+                    sortByFirst={this.sortByFirst}
+                    sortByLast={this.sortByLast}
+                    sortByCity={this.sortByCity}
+                    sortByState={this.sortByState} />
             </div>
         );
     }
