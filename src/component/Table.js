@@ -13,6 +13,21 @@ export default class TableEle extends React.Component {
         error: null,
         isLoaded: false,
         users: [],
+        originalUsers: [],
+        orderBy: {
+            first: {
+                asc: true
+            },
+            last: {
+                asc: true
+            },
+            state: {
+                asc: true
+            },
+            city: {
+                asc: true
+            },
+        }
 
     }
 
@@ -23,7 +38,8 @@ export default class TableEle extends React.Component {
                 (response) => {
                     this.setState({
                         isLoaded: true,
-                        users: response.results //storing results array in items
+                        users: response.results,//storing results array in items
+                        originalUsers: response.results
                     });
                     console.log(this.state.users);
                 },
@@ -38,88 +54,141 @@ export default class TableEle extends React.Component {
 
 
     handleInputChange = event => {
-        // users = this.state.users
+        event.preventDefault();
+        let users = this.state.users
+        // debugger;
         const name = event.target.name;
         const value = event.target.value;
         console.log(value);
         this.setState({
             [name]: value
         });
+        if (value !== "") {
+            const filteredResults = users.filter(user =>
+
+                // user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false);
+                // user.name.first.toLowerCase().includes(value.toLowerCase()))
+                user.name.first.toLowerCase().includes(value.toLowerCase()) || user.name.last.toLowerCase().includes(value.toLowerCase()) || user.location.city.toLowerCase().includes(value.toLowerCase()) || user.location.state.toLowerCase().includes(value.toLowerCase()));
+            //try search by last name,city and state
+            // console.log(user);
+            // console.log(searchTerm)
+            this.setState({
+                users: filteredResults
+            })
+        }
+        else {
+            this.setState({
+                users: this.state.originalUsers
+            })
+            // alert("Please enter search value");
+            // window.location.reload(false); //refresh the userList when user deletes text value
+        }
     };
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-        let users = this.state.users
-        console.log(users);
-        const value = this.state.search;
-        console.log(value);
-        if (value !== "") {
-            const filteredResults = users.filter(user => 
-                
-                // user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false);
-                user.name.first.toLowerCase()===value.toLowerCase());
-                //try search by last name,city and state
-                // console.log(user);
-                // console.log(searchTerm)
+    // handleFormSubmit = event => {
+    //     event.preventDefault();
+    //     let users = this.state.users
+    //     console.log(users);
+    //     const value = this.state.search;
+    //     console.log(value);
+    //     if (value !== "") {
+    //         const filteredResults = users.filter(user => 
+
+    //             // user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false);
+    //             user.name.first.toLowerCase()===value.toLowerCase() || user.name.last.toLowerCase()===value.toLowerCase() ||user.location.city.toLowerCase()===value.toLowerCase()||user.location.state.toLowerCase()===value.toLowerCase());
+    //             //try search by last name,city and state
+    //             // console.log(user);
+    //             // console.log(searchTerm)
+    //             this.setState({
+    //                 users: filteredResults
+    //             })
+    //         }
+    //     else {
+    //         alert("Please enter search value");
+    //         window.location.reload(false); //refresh the userList when user deletes text value
+    //     }
+
+
+    // }
+
+
+    sortBy = (category, orderBy) => {
+        let sortedUserList = [];
+
+        switch (category) {
+            case "firstName":
+                if (orderBy.first.asc) {
+                    sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
+                }
+                else {
+
+                    sortedUserList = this.state.users.sort((a, b) => b.name.first.localeCompare(a.name.first));
+                }
                 this.setState({
-                    users: filteredResults
+                    orderBy: {
+                        first: {
+                            asc: !this.state.orderBy.first
+                        }
+                    }
                 })
-            }
-        else {
-            alert("Please enter search value");
-            window.location.reload(false); //refresh the userList when user deletes text value
-        }
- 
+
         
+        break;
+            case "lastName":
+        sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
+        break;
+            case "city":
+        sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
+        break;
+            case "state":
+        sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
+        break;
+            default:
+        sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
+}
+
+this.setState({
+    users: sortedUserList
+})
     }
+// sortByLast = (event) => {
+//     event.preventDefault();
+//     let sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
+//     this.setState({
+//         users: sortedUserList
+//     })
+// }
+// sortByCity = (event) => {
+//     event.preventDefault();
+//     let sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
+//     this.setState({
+//         users: sortedUserList
+//     })
+// }
+
+// sortByState = (event) => {
+//     event.preventDefault();
+//     let sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
+//     this.setState({
+//         users: sortedUserList
+//     })
+// }
 
 
-    sortByFirst = (event) => {
-        event.preventDefault();
-        let sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
-        this.setState({
-            users: sortedUserList
-        })
-    }
-    sortByLast = (event) => {
-        event.preventDefault();
-        let sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
-        this.setState({
-            users: sortedUserList
-        })
-    }
-    sortByCity = (event) => {
-        event.preventDefault();
-        let sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
-        this.setState({
-            users: sortedUserList
-        })
-    }
 
-    sortByState = (event) => {
-        event.preventDefault();
-        let sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
-        this.setState({
-            users: sortedUserList
-        })
-    }
-
-
-
-    render() {
-        return (
-            <div className="container">
-                <SearchUser
-                    search={this.state.search}
-                    handleFormSubmit={this.handleFormSubmit}
-                    handleInputChange={this.handleInputChange}
-                />
-                <UserList userResults={this.state.users}
-                    sortByFirst={this.sortByFirst}
-                    sortByLast={this.sortByLast}
-                    sortByCity={this.sortByCity}
-                    sortByState={this.sortByState} />
-            </div>
-        );
-    }
+render() {
+    return (
+        <div className="container">
+            <SearchUser
+                search={this.state.search}
+                handleFormSubmit={this.handleFormSubmit}
+                handleInputChange={this.handleInputChange}
+            />
+            <UserList userResults={this.state.users}
+                sortBy={this.sortBy}
+                orderBy={this.state.orderBy}
+            />
+        </div>
+    );
+}
 }

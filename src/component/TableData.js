@@ -10,13 +10,13 @@ function UserList(props) {
             <thead>
                 <tr>
                     <th>Picture</th>
-                    <th onClick={props.sortByFirst}>First Name<FontAwesomeIcon icon={faAngleDown} /></th>
-                    <th onClick={props.sortByLast}>Last Name<FontAwesomeIcon icon={faAngleDown} /></th>
+                    <th onClick={()=>props.sortBy("firstName",props.orderBy)}>First Name<FontAwesomeIcon icon={faAngleDown} /></th>
+                    <th onClick={()=>props.sortBy("lastName",props.orderBy)}>Last Name<FontAwesomeIcon icon={faAngleDown} /></th>
                     <th>Gender</th>
                     <th>Email</th>
                     <th>Contact Number</th>
-                    <th onClick={props.sortByCity}>City<FontAwesomeIcon icon={faAngleDown} /></th>
-                    <th onClick={props.sortByState}>State<FontAwesomeIcon icon={faAngleDown} /></th>
+                    <th onClick={()=>props.sortBy("city",props.orderBy)}>City<FontAwesomeIcon icon={faAngleDown} /></th>
+                    <th onClick={()=>props.sortBy("state",props.orderBy)}>State<FontAwesomeIcon icon={faAngleDown} /></th>
 
                 </tr>
             </thead>
