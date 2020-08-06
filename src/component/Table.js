@@ -143,7 +143,29 @@ export default class TableEle extends React.Component {
                 
              break;
             case "city":
+            if (orderBy.city.asc) {
                 sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
+                this.setState({
+                    orderBy: {
+                        city: {
+                            asc: false
+                        }
+                    }
+                })
+
+            }
+            else {
+
+                sortedUserList = this.state.users.sort((a, b) => b.location.city.localeCompare(a.location.city));
+                this.setState({
+                    orderBy: {
+                        city: {
+                            asc: true
+                        }
+                    }
+                })
+
+            }        
                 break;
             case "state":
                 sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
