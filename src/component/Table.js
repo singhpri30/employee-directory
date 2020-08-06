@@ -81,6 +81,13 @@ export default class TableEle extends React.Component {
            users:sortedUserList
        })
     }
+    sortByLast = (event) => {
+        event.preventDefault();
+        let sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
+       this.setState({
+           users:sortedUserList
+       })
+    }
 
    
 
