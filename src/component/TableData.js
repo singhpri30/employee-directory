@@ -7,13 +7,13 @@ function UserList(props) {
             <thead>
                 <tr>
                     <th>Picture</th>
-                    <th>First Name</th>
-                    <th >Last Name</th>
+                    <th onClick={props.sortBy}>First Name</th>
+                    <th onClick={props.sortBy}>Last Name</th>
                     <th>Gender</th>
                     <th>Email</th>
                     <th>Contact Number</th>
-                    <th>City</th>
-                    <th>State</th>
+                    <th onClick={props.sortBy}>City</th>
+                    <th onClick={props.sortBy}>State</th>
 
                 </tr>
             </thead>

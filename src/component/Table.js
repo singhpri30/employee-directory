@@ -38,9 +38,8 @@ export default class TableEle extends React.Component {
 
 
     handleInputChange = event => {
-        // let users = this.state.users
+        // users = this.state.users
         const name = event.target.name;
-
         const value = event.target.value;
         console.log(value);
         this.setState({
@@ -49,6 +48,7 @@ export default class TableEle extends React.Component {
     };
 
     handleFormSubmit = event => {
+        
         event.preventDefault();
         let users = this.state.users
         console.log(users);
@@ -66,7 +66,7 @@ export default class TableEle extends React.Component {
             console.log(filteredResults);
         }
         else {
-            users = this.state.users;
+            alert("please enter search criteria");
         }
 
     }
