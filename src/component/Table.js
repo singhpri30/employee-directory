@@ -98,7 +98,16 @@ export default class TableEle extends React.Component {
                         orderBy: {
                             first: {
                                 asc: false
-                            }
+                            },
+                            last: {
+                                asc: true
+                            },
+                            state: {
+                                asc: true
+                            },
+                            city: {
+                                asc: true
+                            },
                         }
                     })
 
@@ -110,11 +119,20 @@ export default class TableEle extends React.Component {
                         orderBy: {
                             first: {
                                 asc: true
-                            }
+                            },
+                            last: {
+                                asc: true
+                            },
+                            state: {
+                                asc: true
+                            },
+                            city: {
+                                asc: true
+                            },
                         }
                     })
 
-                }
+                }  
                 break;
             case "lastName":
             if (orderBy.last.asc) {
@@ -123,7 +141,16 @@ export default class TableEle extends React.Component {
                     orderBy: {
                         last: {
                             asc: false
-                        }
+                        },
+                        first: {
+                            asc: true
+                        },
+                        state: {
+                            asc: true
+                        },
+                        city: {
+                            asc: true
+                        },
                     }
                 })
 
@@ -135,7 +162,16 @@ export default class TableEle extends React.Component {
                     orderBy: {
                         last: {
                             asc: true
-                        }
+                        },
+                        first: {
+                            asc: true
+                        },
+                        state: {
+                            asc: true
+                        },
+                        city: {
+                            asc: true
+                        },
                     }
                 })
 
@@ -168,7 +204,29 @@ export default class TableEle extends React.Component {
             }        
                 break;
             case "state":
+            if (orderBy.state.asc) {
                 sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
+                this.setState({
+                    orderBy: {
+                        state: {
+                            asc: false
+                        }
+                    }
+                })
+
+            }
+            else {
+
+                sortedUserList = this.state.users.sort((a, b) => b.location.state.localeCompare(a.location.state));
+                this.setState({
+                    orderBy: {
+                        state: {
+                            asc: true
+                        }
+                    }
+                })
+
+            } 
                 break;
             default:
                 sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
