@@ -77,34 +77,34 @@ export default class TableEle extends React.Component {
     sortByFirst = (event) => {
         event.preventDefault();
         let sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
-       this.setState({
-           users:sortedUserList
-       })
+        this.setState({
+            users: sortedUserList
+        })
     }
     sortByLast = (event) => {
         event.preventDefault();
         let sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
-       this.setState({
-           users:sortedUserList
-       })
+        this.setState({
+            users: sortedUserList
+        })
     }
     sortByCity = (event) => {
         event.preventDefault();
         let sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
-       this.setState({
-           users:sortedUserList
-       })
+        this.setState({
+            users: sortedUserList
+        })
     }
 
     sortByState = (event) => {
         event.preventDefault();
-        let sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
-       this.setState({
-           users:sortedUserList
-       })
+        let sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
+        this.setState({
+            users: sortedUserList
+        })
     }
 
-   
+
 
     render() {
         return (
