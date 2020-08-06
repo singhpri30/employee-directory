@@ -7,15 +7,15 @@ function UserList(props) {
             <thead>
                 <tr>
                     <th>Picture</th>
-                    <th onClick={props.sortBy}>First Name</th>
-                    <th onClick={props.sortBy}>Last Name</th>
+                    <th onClick={props.sortByFirst}>First Name</th>
+                    <th onClick={props.sortByLast}>Last Name</th>
                     <th>Gender</th>
                     <th>Email</th>
                     <th>Contact Number</th>
-                    <th onClick={props.sortBy}>City</th>
-                    <th onClick={props.sortBy}>State</th>
+                    <th onClick={props.sortByCity}>City</th>
+                    <th onClick={props.sortByState}>State</th>
 
-                </tr>
+                </tr>   
             </thead>
             <tbody>
                 {/* looping over user array    */}

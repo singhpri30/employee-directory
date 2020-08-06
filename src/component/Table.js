@@ -80,7 +80,11 @@ export default class TableEle extends React.Component {
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
                 />
-                <UserList userResults={this.state.users} />
+                <UserList userResults={this.state.users} 
+                sortByFirst={this.sortByFirst}
+                sortByLast={this.sortByLast}
+                sortByCity={this.sortByCity}
+                sortByState={this.sortByState}/>
             </div>
         );
     }
