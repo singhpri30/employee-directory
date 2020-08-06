@@ -85,31 +85,6 @@ export default class TableEle extends React.Component {
         }
     };
 
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-    //     let users = this.state.users
-    //     console.log(users);
-    //     const value = this.state.search;
-    //     console.log(value);
-    //     if (value !== "") {
-    //         const filteredResults = users.filter(user => 
-
-    //             // user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false);
-    //             user.name.first.toLowerCase()===value.toLowerCase() || user.name.last.toLowerCase()===value.toLowerCase() ||user.location.city.toLowerCase()===value.toLowerCase()||user.location.state.toLowerCase()===value.toLowerCase());
-    //             //try search by last name,city and state
-    //             // console.log(user);
-    //             // console.log(searchTerm)
-    //             this.setState({
-    //                 users: filteredResults
-    //             })
-    //         }
-    //     else {
-    //         alert("Please enter search value");
-    //         window.location.reload(false); //refresh the userList when user deletes text value
-    //     }
-
-
-    // }
 
 
     sortBy = (category, orderBy) => {
@@ -181,7 +156,6 @@ render() {
         <div className="container">
             <SearchUser
                 search={this.state.search}
-                handleFormSubmit={this.handleFormSubmit}
                 handleInputChange={this.handleInputChange}
             />
             <UserList userResults={this.state.users}

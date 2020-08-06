@@ -15,9 +15,6 @@ function SearchUser(props) {
           placeholder="Search for a Gif"
           id="search"
         />
-        <button onClick={props.handleFormSubmit} className="btn btn-primary ml-2">
-          Search
-        </button>
       </div>
     </form>
   );
