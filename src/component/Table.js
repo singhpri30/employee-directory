@@ -54,21 +54,23 @@ export default class TableEle extends React.Component {
         const value = this.state.search;
         console.log(value);
         if (value !== "") {
-            const filteredResults = users.filter(user => {
-                return user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false
-                //try search last name,city and state
+            const filteredResults = users.filter(user => 
+                
+                // user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false);
+                user.name.first.toLowerCase()===value.toLowerCase());
+                //try search by last name,city and state
                 // console.log(user);
                 // console.log(searchTerm)
-            })
-            this.setState({
-                users: filteredResults
-            })
-            console.log(filteredResults);
-        }
+                this.setState({
+                    users: filteredResults
+                })
+            }
         else {
             alert("Please enter search value");
+            window.location.reload(false); //refresh the userList when user deletes text value
         }
-        //refresh the userList when user deletes text value
+ 
+        
     }
 
 

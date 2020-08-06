@@ -1,5 +1,7 @@
 import React from "react";
 import Table from 'react-bootstrap/Table';
+import 'bootstrap/dist/css/bootstrap.css';
+import "./tableData.css";
 
 function UserList(props) {
     return (
@@ -7,7 +9,7 @@ function UserList(props) {
             <thead>
                 <tr>
                     <th>Picture</th>
-                    <th onClick={props.sortByFirst}>First Name</th>
+                    <th className="MyReactTableClass" onClick={props.sortByFirst}>First Name</th>
                     <th onClick={props.sortByLast}>Last Name</th>
                     <th>Gender</th>
                     <th>Email</th>
