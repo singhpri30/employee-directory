@@ -132,101 +132,137 @@ export default class TableEle extends React.Component {
                         }
                     })
 
-                }  
+                }
                 break;
             case "lastName":
-            if (orderBy.last.asc) {
-                sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
-                this.setState({
-                    orderBy: {
-                        last: {
-                            asc: false
-                        },
-                        first: {
-                            asc: true
-                        },
-                        state: {
-                            asc: true
-                        },
-                        city: {
-                            asc: true
-                        },
-                    }
-                })
+                if (orderBy.last.asc) {
+                    sortedUserList = this.state.users.sort((a, b) => a.name.last.localeCompare(b.name.last));
+                    this.setState({
+                        orderBy: {
+                            last: {
+                                asc: false
+                            },
+                            first: {
+                                asc: true
+                            },
+                            state: {
+                                asc: true
+                            },
+                            city: {
+                                asc: true
+                            },
+                        }
+                    })
 
-            }
-            else {
+                }
+                else {
 
-                sortedUserList = this.state.users.sort((a, b) => b.name.last.localeCompare(a.name.last));
-                this.setState({
-                    orderBy: {
-                        last: {
-                            asc: true
-                        },
-                        first: {
-                            asc: true
-                        },
-                        state: {
-                            asc: true
-                        },
-                        city: {
-                            asc: true
-                        },
-                    }
-                })
+                    sortedUserList = this.state.users.sort((a, b) => b.name.last.localeCompare(a.name.last));
+                    this.setState({
+                        orderBy: {
+                            last: {
+                                asc: true
+                            },
+                            first: {
+                                asc: true
+                            },
+                            state: {
+                                asc: true
+                            },
+                            city: {
+                                asc: true
+                            },
+                        }
+                    })
 
-            }
-                
-             break;
+                }
+
+                break;
             case "city":
-            if (orderBy.city.asc) {
-                sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
-                this.setState({
-                    orderBy: {
-                        city: {
-                            asc: false
+                if (orderBy.city.asc) {
+                    sortedUserList = this.state.users.sort((a, b) => a.location.city.localeCompare(b.location.city));
+                    this.setState({
+                        orderBy: {
+                            city: {
+                                asc: false
+                            },
+                            first: {
+                                asc: true
+                            },
+                            state: {
+                                asc: true
+                            },
+                            last: {
+                                asc: true
+                            },
                         }
-                    }
-                })
+                    })
 
-            }
-            else {
+                }
+                else {
 
-                sortedUserList = this.state.users.sort((a, b) => b.location.city.localeCompare(a.location.city));
-                this.setState({
-                    orderBy: {
-                        city: {
-                            asc: true
+                    sortedUserList = this.state.users.sort((a, b) => b.location.city.localeCompare(a.location.city));
+                    this.setState({
+                        orderBy: {
+                            city: {
+                                asc: true
+                            },
+                            first: {
+                                asc: true
+                            },
+                            state: {
+                                asc: true
+                            },
+                            last: {
+                                asc: true
+                            },
                         }
-                    }
-                })
+                    })
 
-            }        
+                }
                 break;
             case "state":
-            if (orderBy.state.asc) {
-                sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
-                this.setState({
-                    orderBy: {
-                        state: {
-                            asc: false
+                if (orderBy.state.asc) {
+                    sortedUserList = this.state.users.sort((a, b) => a.location.state.localeCompare(b.location.state));
+                    this.setState({
+                        orderBy: {
+                            state: {
+                                asc: false
+                            },
+                            first: {
+                                asc: true
+                            },
+                            city: {
+                                asc: true
+                            },
+                            last: {
+                                asc: true
+                            },
                         }
-                    }
-                })
+                    })
 
-            }
-            else {
+                }
+                else {
 
-                sortedUserList = this.state.users.sort((a, b) => b.location.state.localeCompare(a.location.state));
-                this.setState({
-                    orderBy: {
-                        state: {
-                            asc: true
+                    sortedUserList = this.state.users.sort((a, b) => b.location.state.localeCompare(a.location.state));
+                    this.setState({
+                        orderBy: {
+                            state: {
+                                asc: true
+                            },
+                            first: {
+                                asc: true
+                            },
+                            city: {
+                                asc: true
+                            },
+                            last: {
+                                asc: true
+                            },
                         }
-                    }
-                })
+                    })
 
-            } 
+                }
                 break;
             default:
                 sortedUserList = this.state.users.sort((a, b) => a.name.first.localeCompare(b.name.first));
