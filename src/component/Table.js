@@ -9,7 +9,7 @@ import SearchUser from "./SearchUser";
 export default class TableEle extends React.Component {
 
     state = {
-        searchValue: "",
+        search: "",
         error: null,
         isLoaded: false,
         users: [],
@@ -48,7 +48,6 @@ export default class TableEle extends React.Component {
     };
 
     handleFormSubmit = event => {
-
         event.preventDefault();
         let users = this.state.users
         console.log(users);
@@ -57,6 +56,7 @@ export default class TableEle extends React.Component {
         if (value !== "") {
             const filteredResults = users.filter(user => {
                 return user.name.first.toLowerCase().indexOf(value.toLowerCase()) !== -1 ? true : false
+                //try search last name,city and state
                 // console.log(user);
                 // console.log(searchTerm)
             })
@@ -66,11 +66,9 @@ export default class TableEle extends React.Component {
             console.log(filteredResults);
         }
         else {
-            this.setState({
-                users: ""
-            })
+            alert("Please enter search value");
         }
-
+        //refresh the userList when user deletes text value
     }
 
 
