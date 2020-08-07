@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Table from './component/Table';
 import Header from './component/Header';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -7,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
-    <div className="container">
+    <div className="ml-5 mr-5">
       <Header></Header>
       <Table></Table>
     </div>

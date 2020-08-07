@@ -11,8 +11,8 @@ function SearchUser(props) {
           value={props.search}
           name="search"
           type="text"
-          className="d-inline"
-          placeholder="Search for a Gif"
+          className="d-inline w-50 shadow-lg rounded"
+          placeholder="Search by first name, last name, state and city"
           id="search"
         />
       </div>
