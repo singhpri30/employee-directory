@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "951de4e4a719889db881d1e02c1601a4",
+    "revision": "234952e946baef7ecf1924a569650724",
     "url": "/singhpri30/employee-directory/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/singhpri30/employee-directory/static/css/2.829c9cb5.chunk.css"
   },
   {
-    "revision": "4125f27285e452c2bb9e",
+    "revision": "56fa415c9ac9427b705f",
     "url": "/singhpri30/employee-directory/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/singhpri30/employee-directory/static/js/2.42ec6e77.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4125f27285e452c2bb9e",
-    "url": "/singhpri30/employee-directory/static/js/main.bc2b089e.chunk.js"
+    "revision": "56fa415c9ac9427b705f",
+    "url": "/singhpri30/employee-directory/static/js/main.64a93b3d.chunk.js"
   },
   {
     "revision": "31bd4027336ec9a142a2",
