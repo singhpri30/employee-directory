@@ -264,7 +264,7 @@ export default class TableEle extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <SearchUser
                     search={this.state.search}
                     handleInputChange={this.handleInputChange}
