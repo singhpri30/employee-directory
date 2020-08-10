@@ -6,7 +6,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 function UserList(props) {
     return (
-        <Table striped bordered hover variant="dark" className="mt-2 w-auto">
+        <Table responsive striped bordered hover variant="dark" className="mt-2 w-auto">
             <thead>
                 <tr>
                     <th>Picture</th>
